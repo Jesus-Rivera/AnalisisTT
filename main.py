@@ -1,11 +1,17 @@
 
 from dem.reader import Reader
+from dem.tokenizer import Tokenizer
 
-book = 'data/books/poemas.pdf'
+book = '../data/books/poemas.pdf'
 read = Reader(book)
 
 
-print('Paginas en el libro: '+ str(read.pages))
-print('Paginas utililizadas: '+ str(read.u_pages))
+page = int(input('Pagina a segmentar: '))
 
-print(read.get_data_page(int(input('Pagina: '))))
+toks = Tokenizer()
+
+aux = toks.load_text(read.get_data_page(page))
+
+for i in aux:
+    print(i)
+    print('-------------------------------')
